@@ -1,9 +1,8 @@
-{ pkgs
-, lib
-, check ? true
-,
-}:
-let
+{
+  pkgs,
+  lib,
+  check ? true,
+}: let
   modules = [
     ./chatgpt
     ./completion
@@ -24,9 +23,10 @@ let
     ./git
     ./build
     ./debugger
+    ./formatters
   ];
 
-  pkgsModule = { config, ... }: {
+  pkgsModule = {config, ...}: {
     config = {
       _module.args.baseModules = modules;
       _module.args.pkgsPath = lib.mkDefault pkgs.path;
@@ -35,4 +35,4 @@ let
     };
   };
 in
-modules ++ [ pkgsModule ]
+  modules ++ [pkgsModule]
