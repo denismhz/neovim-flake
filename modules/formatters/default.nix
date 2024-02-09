@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "";
     default = true;
     packages = {
-      leptosfmt = mkPackageOption pkgs [ "leptosfmt package to use" ] {
+      leptosfmt = mkPackageOption pkgs "leptosfmt package to use" {
         default = [ "leptosfmt" ];
       };
     };
@@ -54,7 +54,7 @@ in
             })
             require("conform").formatters.leptosfmt = {
               inherit = false,
-              command ="leptosfmt",
+              command ="${pkgs.leptosfmt}/bin/leptosfmt",
               args = {"-s"};
             }
           '';
