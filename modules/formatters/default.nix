@@ -11,6 +11,11 @@ in
   options.vim.formatters = {
     enable = mkEnableOption "";
     default = true;
+    packages = {
+      leptosfmt = mkPackageOption pkgs [ "leptosfmt package to use" ] {
+        default = [ "leptosfmt" ];
+      };
+    };
 
     conform = {
       #use plugin conformer.nvim
